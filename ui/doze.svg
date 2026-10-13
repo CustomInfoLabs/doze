@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 64 64" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Doze — monogramma CI</title>
+  <desc id="desc">Una i minuscola arancione a sinistra e una C specchiata blu, con angoli squadrati, formano una D aperta.</desc>
+  <path fill="#ff8a2a" d="M12 12h6v6h-6zM12 25h6v27h-6z"/>
+  <path stroke="#64b5ff" stroke-width="6" stroke-linecap="square" stroke-linejoin="miter" d="M25 15h15l9 9v16l-9 9H25"/>
+</svg>

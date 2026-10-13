@@ -1,0 +1,186 @@
+DOZE — LICENZA D’USO GRATUITO E CONSULTAZIONE DEL SORGENTE
+DOZE — FREE USE AND SOURCE INSPECTION LICENCE
+
+Copyright © 2026 CustomInfo.
+https://custominfo.it/
+
+
+ITALIANO
+========
+
+1. AMBITO
+
+Queste condizioni si applicano al programma Doze, al suo codice
+sorgente originale e agli asset originali distribuiti da CustomInfo.
+
+Doze è distribuito gratuitamente. La pubblicazione del sorgente
+consente di esaminare e verificare il funzionamento del programma;
+non costituisce una concessione generale di riutilizzo del codice.
+
+2. UTILIZZO DEL PROGRAMMA
+
+È consentito scaricare, installare ed eseguire il programma ufficiale
+gratuitamente, per uso personale e professionale, su uno o più PC
+legittimamente utilizzati dall’utente o dalla sua organizzazione.
+
+È consentito conservare copie di sicurezza e copiare il pacchetto
+all’interno della propria organizzazione per questi utilizzi.
+Questa autorizzazione non trasferisce la proprietà del software.
+
+3. CONSULTAZIONE E VERIFICA DEL SORGENTE
+
+È consentito consultare e scaricare il sorgente, analizzarlo,
+compilarlo ed eseguire localmente le copie così ottenute per
+verificarne il comportamento. Sono consentite modifiche locali
+finalizzate a prove, analisi e verifiche.
+
+È consentito segnalare problemi e risultati delle verifiche.
+Una copia modificata non deve essere presentata come versione
+ufficiale di CustomInfo.
+
+Restano consentite le operazioni di visualizzazione e fork previste
+dalle condizioni della piattaforma su cui CustomInfo pubblica
+il repository ufficiale. Queste operazioni non concedono ulteriori
+diritti di sfruttamento del codice o degli asset.
+
+4. RIUTILIZZO, DISTRIBUZIONE E IDENTITÀ GRAFICA
+
+Salvo i permessi espressamente concessi da questa licenza
+o dalla legge applicabile,
+è necessaria un’autorizzazione scritta preventiva di CustomInfo per:
+
+- incorporare il codice originale di Doze in altri prodotti;
+- vendere copie del programma o concederne sublicenze;
+- distribuire pubblicamente il pacchetto ufficiale, incluse copie
+  ospitate su altri siti o incluse in raccolte di software;
+- distribuire versioni modificate o prodotti derivati;
+- riutilizzare in altri prodotti i loghi, le icone e gli asset
+  grafici originali di Doze e CustomInfo.
+
+È consentito condividere collegamenti alle pagine e ai download
+ufficiali. Le copie consentite devono conservare questa licenza
+e gli avvisi applicabili. Non è consentito dichiarare approvazioni,
+affiliazioni o provenienze ufficiali inesistenti.
+
+La possibilità di visualizzare il codice grafico per verificarlo
+non concede il diritto di riutilizzare gli asset originali
+per l’identità di un altro prodotto.
+
+5. GARANZIE E RESPONSABILITÀ
+
+Nei limiti consentiti dalla legge applicabile, Doze viene fornito
+così com’è, senza garanzie ulteriori rispetto a quelle inderogabili
+previste dalla legge. Non è garantita l’assenza di errori né
+l’idoneità a qualsiasi configurazione o esigenza specifica.
+
+Doze può richiedere operazioni energetiche a Windows. Prima di
+programmare spegnimento o riavvio, salva il lavoro in corso.
+La chiusura forzata delle applicazioni può causare perdita di dati.
+
+Nella misura consentita dalla legge, CustomInfo non assume
+responsabilità per danni derivanti dall’utilizzo del programma.
+Questa clausola non esclude né limita responsabilità o diritti
+che non possono essere esclusi o limitati per legge, inclusi
+i diritti inderogabili dei consumatori.
+
+6. DIRITTI RISERVATI E CONTATTI
+
+I diritti non espressamente concessi rimangono riservati ai
+rispettivi titolari. Nessuna clausola limita i diritti inderogabili
+riconosciuti dalla legge applicabile.
+
+Questa licenza non comporta un obbligo di fornire assistenza,
+aggiornamenti o nuove funzionalità, salvo obblighi di legge
+o accordi separati.
+
+Per informazioni o richieste di autorizzazione:
+https://custominfo.it/
+
+
+ENGLISH
+=======
+
+1. SCOPE
+
+These terms apply to Doze, its original source code and the original
+assets distributed by CustomInfo.
+
+Doze is distributed free of charge. Publishing its source code
+allows the program’s operation to be examined and verified;
+it does not grant a general right to reuse the code.
+
+2. USING THE PROGRAM
+
+You may download, install and run the official program free of
+charge for personal and professional use on one or more PCs
+lawfully used by you or your organisation.
+
+You may keep backup copies and copy the package within your
+organisation for these uses. This permission does not transfer
+ownership of the software.
+
+3. SOURCE INSPECTION AND VERIFICATION
+
+You may view and download the source code, analyse it, compile it
+and run the resulting copies locally to verify its behaviour.
+Local modifications for testing, analysis and verification
+are permitted.
+
+You may report problems and verification results. A modified copy
+must not be represented as an official CustomInfo release.
+
+Viewing and forking operations permitted by the terms of the
+platform on which CustomInfo publishes the official repository
+remain permitted. These operations do not grant additional rights
+to exploit the code or assets.
+
+4. REUSE, DISTRIBUTION AND VISUAL IDENTITY
+
+Except for permissions expressly granted by this licence
+or applicable law, prior written permission
+from CustomInfo is required to:
+
+- incorporate Doze’s original code into other products;
+- sell copies of the program or grant sublicences;
+- publicly redistribute the official package, including copies
+  hosted on other websites or included in software collections;
+- distribute modified versions or derivative products;
+- reuse original Doze and CustomInfo logos, icons and graphical
+  assets in other products.
+
+You may share links to official pages and downloads. Permitted
+copies must retain this licence and applicable notices. You must
+not claim endorsements, affiliations or official origins that
+do not exist.
+
+Permission to inspect the graphical code for verification does
+not grant permission to reuse the original assets as the visual
+identity of another product.
+
+5. WARRANTIES AND LIABILITY
+
+To the extent permitted by applicable law, Doze is provided as is,
+without warranties beyond those required by law. It is not
+guaranteed to be error-free or suitable for every configuration
+or particular requirement.
+
+Doze can request Windows power-management operations. Save your
+work before scheduling shutdown or restart. Forcing applications
+to close may cause data loss.
+
+To the extent permitted by law, CustomInfo accepts no liability
+for damage arising from use of the program. This clause does not
+exclude or limit liabilities or rights that cannot legally be
+excluded or limited, including mandatory consumer rights.
+
+6. RESERVED RIGHTS AND CONTACT
+
+Rights not expressly granted remain reserved to their respective
+holders. No provision limits mandatory rights under applicable law.
+
+This licence does not create an obligation to provide support,
+updates or new features, except where required by law or agreed
+separately.
+
+For information or permission requests:
+https://custominfo.it/

@@ -1,0 +1,13 @@
+{
+  "engine": "native-cpp",
+  "format": "portable-directory",
+  "delivery": "release-portable",
+  "name": "Doze",
+  "entrypoint": "src/main.cpp",
+  "buildScript": "packaging/build.ps1",
+  "tests": "tests",
+  "installer": true,
+  "architecture": "x64",
+  "toolchain": "zig-0.15.2-inno-6.7.3",
+  "renderer": "win32-gdiplus"
+}

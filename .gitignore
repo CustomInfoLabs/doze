@@ -1,0 +1,25 @@
+# Python: cache e ambienti locali
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.egg-info/
+
+# Output temporanei di compilazione
+/build/
+/dist/
+
+# Configurazioni locali e credenziali
+.env
+.env.*
+!.env.example
+
+# File del sistema operativo
+Thumbs.db
+Desktop.ini
+.DS_Store

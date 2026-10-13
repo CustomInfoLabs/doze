@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Doze · Anteprima interattiva</title>
+<link rel="icon" href="doze.svg"><link rel="stylesheet" href="doze.css">
+</head>
+<body>
+<svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+<symbol id="power" viewBox="0 0 24 24"><path d="M12 2v9M6.5 5.5a8 8 0 1 0 11 0"/></symbol>
+<symbol id="restart" viewBox="0 0 24 24"><path d="M20 8a8 8 0 1 0 0 8M20 3v5h-5"/></symbol>
+<symbol id="moon" viewBox="0 0 24 24"><path d="M20.5 14A9 9 0 0 1 10 3a9 9 0 1 0 10.5 11Z"/></symbol>
+<symbol id="hibernate" viewBox="0 0 24 24"><path d="M3 6h8l-8 8h8M14 3h6l-6 6h6M14 14h6l-6 6h6"/></symbol>
+<symbol id="about" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7h.01"/></symbol>
+<symbol id="settings" viewBox="0 0 24 24"><path d="M4 7h16M4 17h16M8 4v6M16 14v6"/></symbol>
+<symbol id="lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 15v2"/></symbol>
+<symbol id="arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+<symbol id="check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+<symbol id="close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+</defs></svg>
+<div class="preview-label" id="test-banner" hidden>TEST · Nessuna azione reale sul PC</div>
+<div class="app">
+  <header class="titlebar">
+    <div class="brand"><img src="doze.svg" width="36" height="36" alt=""><strong>doze<span>.</span></strong></div>
+    <div class="window-tools"><button id="about-open" class="icon-button" aria-label="Informazioni su Doze" aria-haspopup="dialog"><svg><use href="#about"/></svg></button><button id="settings-open" class="icon-button" aria-label="Impostazioni"><svg><use href="#settings"/></svg></button><span class="divider"></span><button class="icon-button" id="minimize-preview" aria-label="Riduci finestra, simulazione"><span>−</span></button><button class="icon-button" id="close-preview" aria-label="Chiudi finestra, simulazione"><svg><use href="#close"/></svg></button></div>
+  </header>
+  <main>
+    <div class="intro"><div><p class="eyebrow">IL TUO PC. I TUOI TEMPI.</p><h1>Quando vuoi, <span>stacca.</span></h1></div><span class="version">0.1.0</span></div>
+    <div class="actions" role="group" aria-label="Azione da programmare">
+      <button class="action selected" data-action="shutdown" aria-pressed="true"><svg><use href="#power"/></svg><span>Spegni</span><i></i></button>
+      <button class="action" data-action="restart" aria-pressed="false"><svg><use href="#restart"/></svg><span>Riavvia</span><i></i></button>
+      <button class="action" data-action="sleep" aria-pressed="false"><svg><use href="#moon"/></svg><span>Sospendi</span><i></i></button>
+      <button class="action" data-action="hibernate" aria-pressed="false"><svg><use href="#hibernate"/></svg><span>Iberna</span><i></i></button>
+    </div>
+    <section class="timer-panel" aria-label="Programmazione">
+      <div class="timer-heading"><span id="timer-status"><span class="live-dot"></span> PRONTO QUANDO VUOI</span><span id="action-kind">SPEGNIMENTO</span></div>
+      <div class="clock" role="timer" aria-label="Tempo rimanente"><span id="clock-h">00</span><b>:</b><span id="clock-m">30</span><b>:</b><span id="clock-s">00</span></div>
+      <p class="schedule" id="schedule">Spegnimento tra 30 minuti</p>
+      <div class="progress"><div id="progress-fill"></div></div>
+      <div class="duration" id="duration-controls">
+        <span class="duration-caption">DURATA</span>
+        <div class="stepper"><button data-step="h:-1" aria-label="Riduci ore">−</button><label><input id="hours" type="text" inputmode="numeric" value="00" maxlength="2" aria-label="Ore"><span>h</span></label><button data-step="h:1" aria-label="Aumenta ore">+</button></div>
+        <div class="stepper"><button data-step="m:-1" aria-label="Riduci minuti">−</button><label><input id="minutes" type="text" inputmode="numeric" value="30" maxlength="2" aria-label="Minuti"><span>m</span></label><button data-step="m:1" aria-label="Aumenta minuti">+</button></div>
+        <div class="stepper"><button data-step="s:-1" aria-label="Riduci secondi">−</button><label><input id="seconds" type="text" inputmode="numeric" value="00" maxlength="2" aria-label="Secondi"><span>s</span></label><button data-step="s:1" aria-label="Aumenta secondi">+</button></div>
+      </div>
+      <div class="presets" role="group" aria-label="Durate rapide"><button data-minutes="5">5 min</button><button data-minutes="15">15 min</button><button data-minutes="30" class="active">30 min</button><button data-minutes="60">1 ora</button><button data-minutes="120">2 ore</button></div>
+    </section>
+    <div class="option-row" id="force-row"><div><strong>Forza chiusura programmi</strong><p>Può causare la perdita dei dati non salvati.</p></div><button class="switch" role="switch" aria-checked="false" id="force" aria-label="Forza chiusura programmi"><span></span></button></div>
+    <div class="capability" id="capability"><svg><use href="#check"/></svg><span>Il PC supporta questa azione.</span><button id="capability-info">Dettagli</button></div>
+    <div class="execution"><button class="button cancel" id="cancel" disabled>Annulla</button><button class="button primary" id="start"><svg><use href="#power"/></svg><span>Avvia countdown</span><svg class="end-icon"><use href="#arrow"/></svg></button></div>
+    <div class="quick-actions"><button id="lock-preview"><svg><use href="#lock"/></svg>Blocca PC</button><button id="abort-preview">Annulla spegnimento Windows <svg><use href="#arrow"/></svg></button></div>
+  </main>
+  <footer><span>by <strong>Custom<span>Info</span></strong></span><span id="footer-state"><span class="live-dot"></span> Solo sul tuo PC</span></footer>
+</div>
+<dialog id="settings-dialog"><div class="dialog-top"><div><p class="eyebrow">PREFERENZE</p><h2>A modo tuo.</h2></div><button class="icon-button" data-close="settings-dialog" aria-label="Chiudi impostazioni"><svg><use href="#close"/></svg></button></div>
+  <div class="setting-row"><div><strong>Avviso prima dell’azione</strong><p>Un avviso visibile negli ultimi 10 secondi.</p></div><button class="switch on" role="switch" aria-checked="true" id="final-warning" aria-label="Avviso prima dell’azione"><span></span></button></div>
+  <div class="setting-row"><div><strong>Aspetto chiaro</strong><p>La stessa interfaccia, con più luce.</p></div><button class="switch" role="switch" aria-checked="false" id="light-theme" aria-label="Aspetto chiaro"><span></span></button></div>
+  <div class="setting-row"><div><strong>Lingua</strong><p>Automatica dalla lingua del sistema.</p></div><div class="language-options" role="group" aria-label="Lingua"><button data-language="auto" aria-pressed="true">Auto</button><button data-language="it" aria-pressed="false">Italiano</button><button data-language="en" aria-pressed="false">English</button></div></div>
+  <div class="setting-row"><div><strong>Ibernazione</strong><p id="hibernate-setting-text">Disattivata sul PC simulato.</p></div><button class="text-button" id="enable-hibernate">Attiva</button></div>
+  <div class="demo-note"><strong>Preferenze salvate sul tuo PC.</strong><p>Doze rispetta le impostazioni energetiche di Windows. Attivare l’ibernazione richiede una tua conferma.</p></div>
+</dialog>
+<dialog id="info-dialog"><div class="dialog-top"><div><p class="eyebrow" id="info-kicker">DOZE</p><h2 id="info-title"></h2></div><button class="icon-button" data-close="info-dialog" aria-label="Chiudi dialogo"><svg><use href="#close"/></svg></button></div><p class="info-body" id="info-body"></p><div class="dialog-buttons"><button class="button cancel" id="info-no">Chiudi</button><button class="button primary" id="info-yes" hidden></button></div></dialog>
+<dialog id="about-dialog" aria-labelledby="about-title">
+  <div class="dialog-top"><p class="eyebrow">INFORMAZIONI</p><button class="icon-button" data-close="about-dialog" aria-label="Chiudi informazioni"><svg><use href="#close"/></svg></button></div>
+  <div class="about-brand"><div class="about-icon"><img src="doze.svg" width="72" height="72" alt=""></div><div><h2 id="about-title">Doze<span>.</span></h2><p>Il tuo PC. I tuoi tempi.</p></div></div>
+  <p class="about-description">Programma spegnimento, riavvio, sospensione e ibernazione con un countdown semplice da controllare.</p>
+  <dl class="about-details"><div><dt>Versione</dt><dd><span id="about-version">0.1.0</span> <span class="about-stage">IN SVILUPPO</span></dd></div><div><dt>Realizzato da</dt><dd class="about-author">Custom<span>Info</span></dd></div><div><dt>Piattaforma</dt><dd>Windows</dd></div></dl>
+  <a class="about-site" id="official-site" href="https://custominfo.it/"><span><small>IL SITO UFFICIALE</small><strong>custominfo.it</strong></span><svg><use href="#arrow"/></svg></a>
+</dialog>
+<div id="toast" role="status"></div>
+<script src="locales.js"></script><script src="doze.js"></script>
+</body></html>

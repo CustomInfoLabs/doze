@@ -1,0 +1,9 @@
+{
+  "name": "Doze",
+  "description": "Utility Windows per programmare spegnimento, riavvio, sospensione e ibernazione con un countdown annullabile.",
+  "license": "CustomInfo — uso gratuito e sorgente consultabile (LICENSE.txt)",
+  "stack": "C++20 · Win32 · GDI+",
+  "schemaVersion": 1,
+  "version": "1.0.0",
+  "author": "CustomInfo"
+}

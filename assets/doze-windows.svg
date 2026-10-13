@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 64 64" fill="none" role="img" aria-labelledby="title desc">
+<title id="title">Doze — icona Windows</title>
+<desc id="desc">Monogramma originale su fondo grafite, con angoli superiore destro e inferiore sinistro tagliati. Icona per installer ed eseguibile.</desc>
+<path fill="#10151d" stroke="#435a70" stroke-width="1" d="M2 2h48l12 12v48H14L2 50V2Z"/>
+<path fill="#ff8a2a" d="M12 12h6v6h-6zM12 25h6v27h-6z"/>
+<path stroke="#64b5ff" stroke-width="6" stroke-linecap="square" stroke-linejoin="miter" d="M25 15h15l9 9v16l-9 9H25"/>
+</svg>
