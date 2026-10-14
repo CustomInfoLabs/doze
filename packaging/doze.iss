@@ -42,6 +42,8 @@ Name: "italian"; MessagesFile: "compiler:Languages\Italian.isl"
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [CustomMessages]
+italian.LaunchDoze=Avvia Doze
+english.LaunchDoze=Launch Doze
 italian.ContextMenu=Mostra Doze con Shift + tasto destro su desktop e cartelle
 english.ContextMenu=Show Doze with Shift + right-click on the desktop and folders
 italian.DesktopIcon=Crea un collegamento sul desktop
@@ -85,9 +87,13 @@ Root: HKCU; Subkey: "Software\Classes\Directory\shell\CustomInfo.Doze"; ValueTyp
 Root: HKCU; Subkey: "Software\Classes\Directory\shell\CustomInfo.Doze\command"; ValueType: string; ValueName: ""; ValueData: """{app}\Doze.exe"""; Tasks: contextmenu
 
 [Run]
-Filename: "{app}\Doze.exe"; Description: "Doze"; Flags: nowait postinstall skipifsilent unchecked
+Filename: "{app}\Doze.exe"; Description: "{cm:LaunchDoze}"; Flags: nowait postinstall skipifsilent unchecked
 
 [Code]
+var
+  OriginalDirBrowseClick: TNotifyEvent;
+  OriginalNextClick: TNotifyEvent;
+
 function ProductDirectory(Path: String): String;
 var
   Suffix: String;
@@ -105,16 +111,29 @@ begin
   end;
 end;
 
+procedure ProductDirBrowseClick(Sender: TObject);
+begin
+  OriginalDirBrowseClick(Sender);
+  WizardForm.DirEdit.Text := ProductDirectory(WizardDirValue);
+end;
+
+procedure ProductNextClick(Sender: TObject);
+begin
+  if WizardForm.CurPageID = wpSelectDir then
+    WizardForm.DirEdit.Text := ProductDirectory(WizardDirValue);
+  OriginalNextClick(Sender);
+end;
+
 procedure InitializeWizard;
 begin
   WizardForm.SelectDirBrowseLabel.Caption := CustomMessage('DirectoryHint');
-end;
+  WizardForm.DirEdit.Text := ProductDirectory(WizardDirValue);
 
-function NextButtonClick(CurPageID: Integer): Boolean;
-begin
-  if CurPageID = wpSelectDir then
-    WizardForm.DirEdit.Text := ProductDirectory(WizardDirValue);
-  Result := True;
+  OriginalDirBrowseClick := WizardForm.DirBrowseButton.OnClick;
+  WizardForm.DirBrowseButton.OnClick := @ProductDirBrowseClick;
+
+  OriginalNextClick := WizardForm.NextButton.OnClick;
+  WizardForm.NextButton.OnClick := @ProductNextClick;
 end;
 
 procedure CurStepChanged(CurStep: TSetupStep);
