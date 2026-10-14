@@ -14,7 +14,11 @@ AppVersion={#AppVersion}
 AppPublisher=CustomInfo
 AppPublisherURL=https://custominfo.it/
 AppSupportURL=https://custominfo.it/
-DefaultDirName={localappdata}\Programs\Doze
+AppComments=Doze — Windows power timer
+DefaultDirName={localappdata}\CustomInfo\Doze
+AppendDefaultDirName=no
+DisableDirPage=no
+UsePreviousAppDir=no
 DefaultGroupName=Doze
 PrivilegesRequired=lowest
 ArchitecturesAllowed=x64compatible
@@ -27,6 +31,7 @@ UninstallDisplayIcon={app}\Doze.exe
 Compression=lzma2
 SolidCompression=yes
 WizardStyle=modern
+LicenseFile={#PackageDir}\LICENSE.txt
 CloseApplications=yes
 RestartApplications=no
 DisableProgramGroupPage=yes
@@ -43,6 +48,8 @@ italian.DesktopIcon=Crea un collegamento sul desktop
 english.DesktopIcon=Create a desktop shortcut
 italian.RemovePreferences=Eliminare anche le preferenze e la cache di Doze? Scegli No per conservarle.
 english.RemovePreferences=Also delete Doze preferences and cache? Choose No to keep them.
+italian.DirectoryHint=Scegli la cartella di destinazione. La struttura CustomInfo\Doze verrà mantenuta anche in un percorso personalizzato.
+english.DirectoryHint=Choose the destination folder. The CustomInfo\Doze structure will also be retained in a custom location.
 
 [Tasks]
 Name: "contextmenu"; Description: "{cm:ContextMenu}"
@@ -50,7 +57,6 @@ Name: "desktopicon"; Description: "{cm:DesktopIcon}"; Flags: unchecked
 
 [Files]
 Source: "{#PackageDir}\Doze.exe"; DestDir: "{app}"; Flags: ignoreversion
-
 Source: "{#PackageDir}\README.txt"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#PackageDir}\LICENSE.txt"; DestDir: "{app}"; Flags: ignoreversion
 
@@ -82,6 +88,35 @@ Root: HKCU; Subkey: "Software\Classes\Directory\shell\CustomInfo.Doze\command"; 
 Filename: "{app}\Doze.exe"; Description: "Doze"; Flags: nowait postinstall skipifsilent unchecked
 
 [Code]
+function ProductDirectory(Path: String): String;
+var
+  Suffix: String;
+begin
+  Path := RemoveBackslashUnlessRoot(Trim(Path));
+  Suffix := '\CustomInfo\Doze';
+  if CompareText(Copy(Path, Length(Path) - Length(Suffix) + 1, Length(Suffix)), Suffix) = 0 then
+    Result := Path
+  else begin
+    Suffix := '\CustomInfo';
+    if CompareText(Copy(Path, Length(Path) - Length(Suffix) + 1, Length(Suffix)), Suffix) = 0 then
+      Result := AddBackslash(Path) + 'Doze'
+    else
+      Result := AddBackslash(Path) + 'CustomInfo\Doze';
+  end;
+end;
+
+procedure InitializeWizard;
+begin
+  WizardForm.SelectDirBrowseLabel.Caption := CustomMessage('DirectoryHint');
+end;
+
+function NextButtonClick(CurPageID: Integer): Boolean;
+begin
+  if CurPageID = wpSelectDir then
+    WizardForm.DirEdit.Text := ProductDirectory(WizardDirValue);
+  Result := True;
+end;
+
 procedure CurStepChanged(CurStep: TSetupStep);
 begin
   if CurStep = ssInstall then begin
@@ -94,6 +129,9 @@ procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
 begin
   if CurUninstallStep = usPostUninstall then
     if not UninstallSilent then
-      if MsgBox(CustomMessage('RemovePreferences'), mbConfirmation, MB_YESNO or MB_DEFBUTTON2) = IDYES then
-        DelTree(ExpandConstant('{localappdata}\CustomInfo\Doze'), True, True, True);
+      if MsgBox(CustomMessage('RemovePreferences'), mbConfirmation, MB_YESNO or MB_DEFBUTTON2) = IDYES then begin
+        DeleteFile(ExpandConstant('{localappdata}\CustomInfo\Doze\settings.json'));
+        DeleteFile(ExpandConstant('{localappdata}\CustomInfo\Doze\settings.tmp'));
+        RemoveDir(ExpandConstant('{localappdata}\CustomInfo\Doze'));
+      end;
 end;
